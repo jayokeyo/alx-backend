@@ -36,13 +36,12 @@ class Server:
         Use index_range to find the correct indexes to paginate 
         the dataset correctly and return the appropriate page of the dataset
         '''
-        assert page > 0 and page_size > 0
-        assert isinstance(page, int)
-        assert isinstance(page_size, int)
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
         dataset = self.dataset()
         data_len = len(dataset)
         try:
-            index = index_range(page, page_size)
+            index = self.index_range(page, page_size)
             return dataset[index[0]:index[1]]
         except IndexError:
             return []
