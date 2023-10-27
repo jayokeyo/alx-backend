@@ -3,6 +3,15 @@ import math
 from typing import List, Tuple
 
 
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    '''
+    return a tuple of size two containing a start index
+    and an end index
+    '''
+    offset = page_size * (page - 1)
+    end = offset + page_size
+    return offset, end
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -22,15 +31,6 @@ class Server:
 
         return self.__dataset
 
-    def index_range(self, page: int, page_size: int) -> Tuple[int, int]:
-        '''
-        return a tuple of size two containing a start index
-        and an end index
-        '''
-        offset = page_size * (page - 1)
-        end = offset + page_size
-        return offset, end
-
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         '''
         Use index_range to find the correct indexes to paginate 
@@ -41,7 +41,7 @@ class Server:
         dataset = self.dataset()
         data_len = len(dataset)
         try:
-            index = self.index_range(page, page_size)
+            index = index_range(page, page_size)
             return dataset[index[0]:index[1]]
         except IndexError:
             return []
