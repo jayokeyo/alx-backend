@@ -37,17 +37,15 @@ class FIFOCache(BaseCaching):
                 self.cache_data[key] = item
                 self.cache_index[self.index] = key
                 self.index += 1
-                print(self.cache_index)
             else:
                 self.cache_data[key] = item
                 self.cache_index[self.MAX_ITEMS] = key
                 first_item = self.cache_index[0]
-                print("DISCARD: {}\n".format(first_item))
+                print("DISCARD: {}".format(first_item))
                 del self.cache_data[first_item]
                 for i in range(self.MAX_ITEMS):
                     self.cache_index[i] = self.cache_index[i + 1]
                 del self.cache_index[self.MAX_ITEMS]
-                print(self.cache_index)
 
     def get(self, key):
         """return the value in self.cache_data linked to key.
