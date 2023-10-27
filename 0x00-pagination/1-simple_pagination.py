@@ -1,3 +1,15 @@
+'''
+Implement a method named get_page that takes two integer arguments 
+page with default value 1 and page_size with default value 10.
+
+You have to use Popular_Baby_Names.csv
+Use assert to verify that both arguments are integers greater than 0.
+Use index_range to find the correct indexes to paginate the dataset 
+correctly and return the appropriate page of the dataset 
+(i.e. the correct list of rows).
+If the input arguments are out of range for the dataset, 
+an empty list should be returned.
+'''
 import csv
 import math
 from typing import List, Tuple
