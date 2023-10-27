@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''
+"""
 Implement a get_hyper method that takes the same arguments (and defaults) 
 as get_page and returns a dictionary containing the following key-value pairs:
 
@@ -9,17 +9,16 @@ data: the dataset page (equivalent to return from previous task)
 next_page: number of the next page, None if no next page
 prev_page: number of the previous page, None if no previous page
 total_pages: the total number of pages in the dataset as an integer
-'''
+"""
 import csv
 import math
 from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    '''
-    return a tuple of size two containing a start index
+    """Return a tuple of size two containing a start index
     and an end index
-    '''
+    """
     offset = page_size * (page - 1)
     end = offset + page_size
     return offset, end
@@ -44,10 +43,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        '''
-        Use index_range to find the correct indexes to paginate 
+        """Use index_range to find the correct indexes to paginate 
         the dataset correctly and return the appropriate page of the dataset
-        '''
+        """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
         dataset = self.dataset()
@@ -59,8 +57,7 @@ class Server:
             return []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        """
-        returns a dictionary containing the following key-value pairs:
+        """Returns a dictionary containing the following key-value pairs:
 
             page_size: the length of the returned dataset page
             page: the current page number
