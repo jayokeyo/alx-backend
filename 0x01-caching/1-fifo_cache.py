@@ -42,7 +42,7 @@ class FIFOCache(BaseCaching):
                 self.cache_data[key] = item
                 self.cache_index[self.MAX_ITEMS] = key
                 first_item = self.cache_index[0]
-                print("DISCARD: {}".format(first_item))
+                print("DISCARD: {}\n".format(first_item))
                 del self.cache_data[first_item]
                 for i in range(self.MAX_ITEMS):
                     self.cache_index[i] = self.cache_index[i + 1]
