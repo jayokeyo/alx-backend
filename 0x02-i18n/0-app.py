@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods = ['GET', 'POST'], strict_slashes=False)
-def index():
+def index() -> str:
     '''Render index.html
     '''
     return render_template('index.html')
