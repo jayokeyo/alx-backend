@@ -9,7 +9,7 @@ from flask import Flask, render_template
 from flask_babel import Babel
 
 
-class Config():
+class Config() -> None:
     '''configure babel app
     '''
     LANGUAGES = ["en", "fr"]
@@ -21,7 +21,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 @app.route('/', methods = ['GET', 'POST'], strict_slashes=False)
-def index():
+def index() -> str:
     '''Render index.html
     '''
     return render_template('index.html')
